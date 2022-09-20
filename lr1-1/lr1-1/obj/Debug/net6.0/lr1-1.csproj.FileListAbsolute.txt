@@ -1,0 +1,66 @@
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.AssemblyReference.cache
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.AssemblyInfoInputs.cache
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.AssemblyInfo.cs
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.CoreCompileInputs.cache
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\nlog.config
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\appsettings.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.exe
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.deps.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.runtimeconfig.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.pdb
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\NLog.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Contracts.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\LoggerService.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\LoggerService.pdb
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\bin\Debug\net6.0\Contracts.pdb
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\scopedcss\bundle\lr1-1.styles.css
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.CopyComplete
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\refint\lr1-1.dll
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.pdb
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.genruntimeconfig.cache
+C:\Users\Uniho\source\repos\lr1-1\lr1-1\obj\Debug\net6.0\ref\lr1-1.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\nlog.config
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\appsettings.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.exe
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.deps.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.runtimeconfig.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\lr1-1.pdb
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\NLog.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Contracts.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\LoggerService.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\LoggerService.pdb
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\bin\Debug\net6.0\Contracts.pdb
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.AssemblyReference.cache
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.AssemblyInfoInputs.cache
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.AssemblyInfo.cs
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.CoreCompileInputs.cache
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\scopedcss\bundle\lr1-1.styles.css
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.csproj.CopyComplete
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\refint\lr1-1.dll
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.pdb
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\lr1-1.genruntimeconfig.cache
+C:\Users\pomel\OneDrive\Рабочий стол\lr1-1\lr1-1\obj\Debug\net6.0\ref\lr1-1.dll
