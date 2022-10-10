@@ -1,0 +1,15 @@
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.csproj.AssemblyReference.cache
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.AssemblyInfoInputs.cache
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.AssemblyInfo.cs
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.csproj.CoreCompileInputs.cache
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\LoggerService.deps.json
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\LoggerService.dll
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\LoggerService.pdb
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\Contracts.dll
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\Contracts.pdb
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.csproj.CopyComplete
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.dll
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\refint\LoggerService.dll
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.pdb
+E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll

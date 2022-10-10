@@ -1,0 +1,12 @@
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+E:\ИщуIT\ИщуIT\Contracts\bin\Debug\net6.0\Contracts.deps.json
+E:\ИщуIT\ИщуIT\Contracts\bin\Debug\net6.0\Contracts.dll
+E:\ИщуIT\ИщуIT\Contracts\bin\Debug\net6.0\Contracts.pdb
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.dll
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\Contracts.pdb
+E:\ИщуIT\ИщуIT\Contracts\obj\Debug\net6.0\ref\Contracts.dll
