@@ -70,3 +70,6 @@ E:\ИщуIT\ИщуIT\ИщуIT\obj\Debug\net6.0\refint\ИщуIT.dll
 E:\ИщуIT\ИщуIT\ИщуIT\obj\Debug\net6.0\ИщуIT.pdb
 E:\ИщуIT\ИщуIT\ИщуIT\obj\Debug\net6.0\ИщуIT.genruntimeconfig.cache
 E:\ИщуIT\ИщуIT\ИщуIT\obj\Debug\net6.0\ref\ИщуIT.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\AutoMapper.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\Newtonsoft.Json.dll
