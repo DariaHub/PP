@@ -14,5 +14,8 @@ namespace Repository
         public ItCompanyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
+
+        public IEnumerable<ItCompany> GetAllItCompanies(bool trackChanges) =>
+            FindAll(trackChanges).OrderBy(c => c.Name).ToList();
     }
 }

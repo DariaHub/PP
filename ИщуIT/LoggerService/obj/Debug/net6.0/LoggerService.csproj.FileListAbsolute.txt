@@ -13,3 +13,5 @@ E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.dll
 E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\refint\LoggerService.dll
 E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\LoggerService.pdb
 E:\ИщуIT\ИщуIT\LoggerService\obj\Debug\net6.0\ref\LoggerService.dll
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\Entities.dll
+E:\ИщуIT\ИщуIT\LoggerService\bin\Debug\net6.0\Entities.pdb

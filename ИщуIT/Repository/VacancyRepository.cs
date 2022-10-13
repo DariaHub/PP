@@ -14,5 +14,8 @@ namespace Repository
         public VacancyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
+
+        public IEnumerable<Vacancy> GetAllVacancy(bool trackChanges) =>
+            FindAll(trackChanges).OrderBy(c => c.Name).ToList();
     }
 }
