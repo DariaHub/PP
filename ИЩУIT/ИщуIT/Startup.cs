@@ -23,7 +23,10 @@ public class Startup
         services.ConfigureSqlContext(Configuration);
         services.ConfigureRepositoryManager();
         services.AddAutoMapper(typeof(Startup));
-        services.AddControllers();
+        services.AddControllers(config => {
+            config.RespectBrowserAcceptHeader = true;
+            config.ReturnHttpNotAcceptable = true;
+        }).AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
     }

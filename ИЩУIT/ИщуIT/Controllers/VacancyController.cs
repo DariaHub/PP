@@ -22,15 +22,21 @@ namespace ИщуIT.Controllers
         [HttpGet]
         public IActionResult GetVacancies()
         {
-            var vacancies = _repository.Vacancy.GetAllVacancy(false);
-            var vacanciesDto = vacancies.Select( c => new VacancyDto
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Quantity = c.Quantity,
-                Salary = c.Salary
-            }).ToList();
+            var vacancies = _repository.Vacancy.GetVacancies(false);
+            var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(vacanciesDto);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetVacancy(Guid id)
+        {
+            var vacancy = _repository.Vacancy.GetVacancy(id, false);
+            if (vacancy == null)
+            {
+                _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            var vacancyDto = _mapper.Map<VacancyDto>(vacancy);
+            return Ok(vacancyDto);
         }
     }
 }

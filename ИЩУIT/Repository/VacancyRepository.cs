@@ -15,7 +15,10 @@ namespace Repository
         {
         }
 
-        public IEnumerable<Vacancy> GetAllVacancy(bool trackChanges) =>
+        public IEnumerable<Vacancy> GetVacancies(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+
+        public Vacancy GetVacancy(Guid id, bool trackChanges) =>
+            FindByCondition(c => c.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }

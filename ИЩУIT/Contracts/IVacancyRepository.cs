@@ -9,6 +9,7 @@ namespace Contracts
 {
     public interface IVacancyRepository
     {
-        IEnumerable<Vacancy> GetAllVacancy(bool trackChanges);
+        IEnumerable<Vacancy> GetVacancies(bool trackChanges);
+        Vacancy GetVacancy(Guid id, bool trackChanges);
     }
 }

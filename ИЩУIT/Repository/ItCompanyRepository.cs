@@ -15,7 +15,10 @@ namespace Repository
         {
         }
 
-        public IEnumerable<ItCompany> GetAllItCompanies(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(c => c.Name).ToList();
+        public IEnumerable<ItCompany> GetItCompanies(Guid vacancyId, bool trackChanges) =>
+            FindByCondition(c => c.Id_Vacancy.Equals(vacancyId), trackChanges).OrderBy(c => c.Name);
+
+        public ItCompany GetItCompany(Guid vacancyId, Guid id, bool trackChanges) =>
+            FindByCondition(c => c.Id_Vacancy.Equals(vacancyId) && c.Id.Equals(id), trackChanges).SingleOrDefault();
     }
 }

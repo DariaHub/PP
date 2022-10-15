@@ -9,6 +9,7 @@ namespace Contracts
 {
     public interface IItCompanyRepository
     {
-        IEnumerable<ItCompany> GetAllItCompanies(bool trackChanges);
+        IEnumerable<ItCompany> GetItCompanies(Guid vacancyId, bool trackChanges);
+        ItCompany GetItCompany(Guid vacancyId, Guid id, bool trackChanges);
     }
 }
