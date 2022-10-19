@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,7 @@ namespace ИщуIT.Controllers
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(vacanciesDto);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetVacancy")]
         public IActionResult GetVacancy(Guid id)
         {
             var vacancy = _repository.Vacancy.GetVacancy(id, false);
@@ -37,6 +38,20 @@ namespace ИщуIT.Controllers
             }
             var vacancyDto = _mapper.Map<VacancyDto>(vacancy);
             return Ok(vacancyDto);
+        }
+        [HttpPost]
+        public IActionResult CreateVacancy([FromBody] VacancyCreateDto vacancy)
+        {
+            if (vacancy == null)
+            {
+                _logger.LogError("VacancyCreateDto object sent from client is null.");
+                return BadRequest("VacancyCreateDto object is null");
+            }
+            var vacancyEntity = _mapper.Map<Vacancy>(vacancy);
+            _repository.Vacancy.CreateVacancy(vacancyEntity);
+            _repository.Save();
+            var vacancyReturn = _mapper.Map<VacancyDto>(vacancyEntity);
+            return CreatedAtRoute("GetVacancy", new { vacancyReturn.Id }, vacancyReturn);
         }
     }
 }

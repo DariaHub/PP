@@ -14,6 +14,12 @@ namespace ИщуIT
             CreateMap<Employee, EmployeeDto>();
             CreateMap<ItCompany, ItCompanyDto>();
             CreateMap<Vacancy, VacancyDto>();
+
+            CreateMap<CompanyForCreationDto, Company>();
+            CreateMap<EmployeeForCreationDto, Employee>();
+            CreateMap<ItCompanyCreateDto, ItCompany>();
+            CreateMap<VacancyCreateDto, Vacancy>();
+
         }
     }
 }

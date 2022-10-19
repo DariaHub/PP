@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,7 @@ namespace ИщуIT.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetItCompanies")]
         public IActionResult GetItCompanies(Guid vacancyId, Guid id)
         {
             var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
@@ -49,6 +50,26 @@ namespace ИщуIT.Controllers
             var itCompaniesFromDb = _repository.ItCompany.GetItCompanies(vacancyId, false);
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
             return Ok(itCompanies);
+        }
+        [HttpPost]
+        public IActionResult CreateItCompanies(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)
+        {
+            if (itCompany == null)
+            {
+                _logger.LogError("ItCompanyCreateDto object sent from client is null.");
+                return BadRequest("ItCompanyCreateDto object is null");
+            }
+            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            if (vacancy == null)
+            {
+                _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
+                return NotFound();
+            }
+            var itCompaniesEntity = _mapper.Map<ItCompany>(itCompany);
+            _repository.ItCompany.CreateItCompany(vacancyId, itCompaniesEntity);
+            _repository.Save();
+            var itCompanyReturn = _mapper.Map<ItCompanyDto>(itCompaniesEntity);
+            return CreatedAtRoute("GetItCompanies", new { vacancyId, itCompanyReturn.Id}, itCompanyReturn);
         }
     }
 }

@@ -15,6 +15,12 @@ namespace Repository
         {
         }
 
+        public void CreateItCompany(Guid vacancyId, ItCompany itCompany)
+        {
+            itCompany.Id_Vacancy = vacancyId;
+            Create(itCompany);
+        }
+
         public IEnumerable<ItCompany> GetItCompanies(Guid vacancyId, bool trackChanges) =>
             FindByCondition(c => c.Id_Vacancy.Equals(vacancyId), trackChanges).OrderBy(c => c.Name);
 

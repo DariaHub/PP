@@ -15,6 +15,8 @@ namespace Repository
         {
         }
 
+        public void CreateVacancy(Vacancy vacancy) => Create(vacancy);
+
         public IEnumerable<Vacancy> GetVacancies(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(c => c.Name).ToList();
 

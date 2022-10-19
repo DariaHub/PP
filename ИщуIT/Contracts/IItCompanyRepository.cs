@@ -11,5 +11,6 @@ namespace Contracts
     {
         IEnumerable<ItCompany> GetItCompanies(Guid vacancyId, bool trackChanges);
         ItCompany GetItCompany(Guid vacancyId, Guid id, bool trackChanges);
+        void CreateItCompany(Guid vacancyId, ItCompany itCompany);
     }
 }
