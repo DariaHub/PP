@@ -20,6 +20,10 @@ namespace ИщуIT
             CreateMap<ItCompanyCreateDto, ItCompany>();
             CreateMap<VacancyCreateDto, Vacancy>();
 
+            CreateMap<CompanyForUpdateDto, Company>();
+            CreateMap<EmployeeForUpdateDto, Employee>().ReverseMap();
+            CreateMap<VacancyUpdateDto, Vacancy>().ReverseMap();
+            CreateMap<ItCompanyUpdateDto, ItCompany>().ReverseMap();
         }
     }
 }

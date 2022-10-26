@@ -73,3 +73,6 @@ E:\ИщуIT\ИщуIT\ИщуIT\obj\Debug\net6.0\ref\ИщуIT.dll
 E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\AutoMapper.dll
 E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\ИщуIT\ИщуIT\ИщуIT\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

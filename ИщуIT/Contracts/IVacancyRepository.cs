@@ -12,5 +12,6 @@ namespace Contracts
         IEnumerable<Vacancy> GetVacancies(bool trackChanges);
         Vacancy GetVacancy(Guid id, bool trackChanges);
         void CreateVacancy(Vacancy vacancy);
+        void DeleteVacancy(Vacancy vacancy);
     }
 }

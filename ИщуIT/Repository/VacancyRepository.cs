@@ -17,6 +17,8 @@ namespace Repository
 
         public void CreateVacancy(Vacancy vacancy) => Create(vacancy);
 
+        public void DeleteVacancy(Vacancy vacancy) => Delete(vacancy);
+
         public IEnumerable<Vacancy> GetVacancies(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(c => c.Name).ToList();
 

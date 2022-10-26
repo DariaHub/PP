@@ -21,6 +21,8 @@ namespace Repository
             Create(itCompany);
         }
 
+        public void DeleteItCompany(ItCompany itCompany) => Delete(itCompany);
+
         public IEnumerable<ItCompany> GetItCompanies(Guid vacancyId, bool trackChanges) =>
             FindByCondition(c => c.Id_Vacancy.Equals(vacancyId), trackChanges).OrderBy(c => c.Name);
 

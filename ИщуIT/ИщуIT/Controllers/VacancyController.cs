@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ИщуIT.Controllers
@@ -52,6 +53,57 @@ namespace ИщуIT.Controllers
             _repository.Save();
             var vacancyReturn = _mapper.Map<VacancyDto>(vacancyEntity);
             return CreatedAtRoute("GetVacancy", new { vacancyReturn.Id }, vacancyReturn);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteVacancy(Guid id)
+        {
+            var vacancy = _repository.Vacancy.GetVacancy(id, false);
+            if (vacancy == null)
+            {
+                _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _repository.Vacancy.DeleteVacancy(vacancy);
+            _repository.Save();
+            return NoContent();
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateVacancy(Guid id, [FromBody] VacancyUpdateDto vacancy)
+        {
+            if (vacancy == null)
+            {
+                _logger.LogError("VacancyUpdateDto object sent from client is null.");
+                return BadRequest("VacancyUpdateDto object is null");
+            }
+            var vacancyEntity = _repository.Vacancy.GetVacancy(id, true);
+            if (vacancyEntity == null)
+            {
+                _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            _mapper.Map(vacancy, vacancyEntity);
+            _repository.Save();
+            return NoContent();
+        }
+        [HttpPatch("{id}")]
+        public IActionResult UpdateVacancy(Guid id, [FromBody] JsonPatchDocument<VacancyUpdateDto> vacancy)
+        {
+            if (vacancy == null)
+            {
+                _logger.LogError("VacancyUpdateDto object sent from client is null.");
+                return BadRequest("VacancyUpdateDto object is null");
+            }
+            var vacancyEntity = _repository.Vacancy.GetVacancy(id, true);
+            if (vacancyEntity == null)
+            {
+                _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            var vacancyPatch = _mapper.Map<VacancyUpdateDto>(vacancyEntity);
+            vacancy.ApplyTo(vacancyPatch);
+            _mapper.Map(vacancyPatch, vacancyEntity);
+            _repository.Save();
+            return NoContent();
         }
     }
 }
