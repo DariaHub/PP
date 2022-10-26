@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ms2Yx1fCf/6j3yllE8YB6nNxqe2JA8a3nQkyUuLx0Yo2KeDaOHjJnPAWj1DvL6jzgOJi/Y6k8/wCkJdyP2Qhlw==",
+  "dgSpecHash": "SWT4Uj/fFkAxgt+d7m54d8mbfH1P6kIjLoFzfxcWnkh0cGt/BopILMSFMiC1igEIz8ydi95HB0NsnSUxzzF9Og==",
   "success": true,
-  "projectFilePath": "E:\\ИщуIT\\ИщуIT\\Contracts\\Contracts.csproj",
+  "projectFilePath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Contracts\\Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.9\\microsoft.entityframeworkcore.abstractions.6.0.9.nupkg.sha512",

@@ -22,15 +22,15 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
         }
         [HttpGet("{id}", Name = "GetItCompanies")]
-        public IActionResult GetItCompanies(Guid vacancyId, Guid id)
+        public async Task<IActionResult> GetItCompaniesAsync(Guid vacancyId, Guid id)
         {
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompanyDb = _repository.ItCompany.GetItCompany(vacancyId, id, false);
+            var itCompanyDb = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, false);
             if (itCompanyDb == null)
             {
                 _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
@@ -40,27 +40,32 @@ namespace ИщуIT.Controllers
             return Ok(itCompany);
         }
         [HttpGet]
-        public IActionResult GetItCompany(Guid vacancyId)
+        public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId)
         {
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompaniesFromDb = _repository.ItCompany.GetItCompanies(vacancyId, false);
+            var itCompaniesFromDb = await _repository.ItCompany.GetItCompaniesAsync(vacancyId, false);
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
             return Ok(itCompanies);
         }
         [HttpPost]
-        public IActionResult CreateItCompanies(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)
+        public async Task<IActionResult> CreateItCompaniesAsync(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)
         {
             if (itCompany == null)
             {
                 _logger.LogError("ItCompanyCreateDto object sent from client is null.");
                 return BadRequest("ItCompanyCreateDto object is null");
             }
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the ItCompanyCreateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
@@ -68,77 +73,88 @@ namespace ИщуIT.Controllers
             }
             var itCompaniesEntity = _mapper.Map<ItCompany>(itCompany);
             _repository.ItCompany.CreateItCompany(vacancyId, itCompaniesEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             var itCompanyReturn = _mapper.Map<ItCompanyDto>(itCompaniesEntity);
             return CreatedAtRoute("GetItCompanies", new { vacancyId, itCompanyReturn.Id}, itCompanyReturn);
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteItCompany(Guid vacancyId, Guid id)
+        public async Task<IActionResult> DeleteItCompanyAsync(Guid vacancyId, Guid id)
         {
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompany = _repository.ItCompany.GetItCompany(vacancyId, id, false);
+            var itCompany = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, false);
             if (itCompany == null)
             {
                 _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             _repository.ItCompany.DeleteItCompany(itCompany);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateItCompany(Guid vacancyId, Guid id, [FromBody] ItCompanyUpdateDto itCompany)
+        public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] ItCompanyUpdateDto itCompany)
         {
             if (itCompany == null)
             {
                 _logger.LogError("ItCompanyCreateDto object sent from client is null.");
                 return BadRequest("ItCompanyCreateDto object is null");
             }
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the ItCompanyUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompanyEntity = _repository.ItCompany.GetItCompany(vacancyId, id, true);
+            var itCompanyEntity = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, true);
             if (itCompanyEntity == null)
             {
                 _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             _mapper.Map(itCompany, itCompanyEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPatch("{id}")]
-        public IActionResult UpdateItCompany(Guid vacancyId, Guid id, [FromBody] JsonPatchDocument<ItCompanyUpdateDto> itCompany)
+        public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] JsonPatchDocument<ItCompanyUpdateDto> itCompany)
         {
             if (itCompany == null)
             {
                 _logger.LogError("ItCompanyCreateDto object sent from client is null.");
                 return BadRequest("ItCompanyCreateDto object is null");
             }
-            var vacancy = _repository.Vacancy.GetVacancy(vacancyId, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompanyEntity = _repository.ItCompany.GetItCompany(vacancyId, id, true);
+            var itCompanyEntity = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, true);
             if (itCompanyEntity == null)
             {
                 _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             var itCompanyPatch = _mapper.Map<ItCompanyUpdateDto>(itCompanyEntity);
-            itCompany.ApplyTo(itCompanyPatch);
+            itCompany.ApplyTo(itCompanyPatch, ModelState);
+            TryValidateModel(itCompanyPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
             _mapper.Map(itCompanyPatch, itCompanyEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
     }

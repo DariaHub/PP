@@ -12,6 +12,6 @@ namespace Contracts
         ICompanyRepository Company { get; }
         IVacancyRepository Vacancy { get; }
         IItCompanyRepository ItCompany { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

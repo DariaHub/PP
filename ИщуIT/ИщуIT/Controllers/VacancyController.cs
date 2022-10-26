@@ -22,16 +22,16 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public IActionResult GetVacancies()
+        public async Task<IActionResult> GetVacanciesAsync()
         {
-            var vacancies = _repository.Vacancy.GetVacancies(false);
+            var vacancies = await _repository.Vacancy.GetVacanciesAsync(false);
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(vacanciesDto);
         }
         [HttpGet("{id}", Name = "GetVacancy")]
-        public IActionResult GetVacancy(Guid id)
+        public async Task<IActionResult> GetVacancyAsync(Guid id)
         {
-            var vacancy = _repository.Vacancy.GetVacancy(id, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(id, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
@@ -41,68 +41,84 @@ namespace ИщуIT.Controllers
             return Ok(vacancyDto);
         }
         [HttpPost]
-        public IActionResult CreateVacancy([FromBody] VacancyCreateDto vacancy)
+        public async Task<IActionResult> CreateVacancyAsync([FromBody] VacancyCreateDto vacancy)
         {
             if (vacancy == null)
             {
                 _logger.LogError("VacancyCreateDto object sent from client is null.");
                 return BadRequest("VacancyCreateDto object is null");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the VacancyCreateDto object");
+                return UnprocessableEntity(ModelState);
+            }
             var vacancyEntity = _mapper.Map<Vacancy>(vacancy);
             _repository.Vacancy.CreateVacancy(vacancyEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             var vacancyReturn = _mapper.Map<VacancyDto>(vacancyEntity);
             return CreatedAtRoute("GetVacancy", new { vacancyReturn.Id }, vacancyReturn);
         }
         [HttpDelete("{id}")]
-        public IActionResult DeleteVacancy(Guid id)
+        public async Task<IActionResult> DeleteVacancyAsync(Guid id)
         {
-            var vacancy = _repository.Vacancy.GetVacancy(id, false);
+            var vacancy = await _repository.Vacancy.GetVacancyAsync(id, false);
             if (vacancy == null)
             {
                 _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             _repository.Vacancy.DeleteVacancy(vacancy);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateVacancy(Guid id, [FromBody] VacancyUpdateDto vacancy)
+        public async Task<IActionResult> UpdateVacancyAsync(Guid id, [FromBody] VacancyUpdateDto vacancy)
         {
             if (vacancy == null)
             {
                 _logger.LogError("VacancyUpdateDto object sent from client is null.");
                 return BadRequest("VacancyUpdateDto object is null");
             }
-            var vacancyEntity = _repository.Vacancy.GetVacancy(id, true);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the VacancyUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+            var vacancyEntity = await _repository.Vacancy.GetVacancyAsync(id, true);
             if (vacancyEntity == null)
             {
                 _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             _mapper.Map(vacancy, vacancyEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPatch("{id}")]
-        public IActionResult UpdateVacancy(Guid id, [FromBody] JsonPatchDocument<VacancyUpdateDto> vacancy)
+        public async Task<IActionResult> UpdateVacancyAsync(Guid id, [FromBody] JsonPatchDocument<VacancyUpdateDto> vacancy)
         {
             if (vacancy == null)
             {
                 _logger.LogError("VacancyUpdateDto object sent from client is null.");
                 return BadRequest("VacancyUpdateDto object is null");
             }
-            var vacancyEntity = _repository.Vacancy.GetVacancy(id, true);
+            var vacancyEntity = await _repository.Vacancy.GetVacancyAsync(id, true);
             if (vacancyEntity == null)
             {
                 _logger.LogInfo($"Vacancy with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             var vacancyPatch = _mapper.Map<VacancyUpdateDto>(vacancyEntity);
-            vacancy.ApplyTo(vacancyPatch);
+            vacancy.ApplyTo(vacancyPatch, ModelState);
+            TryValidateModel(vacancyPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
             _mapper.Map(vacancyPatch, vacancyEntity);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d9b8dkcI5UB8an3to4GJNALW/RqyJpZI/MBNrdasyuzzvHrr2XOzjPkUj9Zrf0AfRcK4ufMO/9xuM4N/7y76Cw==",
+  "dgSpecHash": "ot7lwpOWSvBY7C2mKkmDdFaEJ3FaCGjJelL+/FIbJMuG5z7szUnpFk0XQWAI3EunYaMwENewzs1qfRpVbaQIag==",
   "success": true,
-  "projectFilePath": "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj",
+  "projectFilePath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.9\\microsoft.entityframeworkcore.abstractions.6.0.9.nupkg.sha512",

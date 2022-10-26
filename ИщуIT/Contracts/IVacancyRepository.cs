@@ -9,8 +9,8 @@ namespace Contracts
 {
     public interface IVacancyRepository
     {
-        IEnumerable<Vacancy> GetVacancies(bool trackChanges);
-        Vacancy GetVacancy(Guid id, bool trackChanges);
+        Task<IEnumerable<Vacancy>> GetVacanciesAsync(bool trackChanges);
+        Task<Vacancy> GetVacancyAsync(Guid id, bool trackChanges);
         void CreateVacancy(Vacancy vacancy);
         void DeleteVacancy(Vacancy vacancy);
     }

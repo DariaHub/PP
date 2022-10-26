@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/dKaRl79FDgdCxX1YyefKofZtglsUguHrvEVo4k3eLsuOTcsyalAu7G2jwzaLXtX0QMkjJ3upMaSyJzkUMlZgg==",
+  "dgSpecHash": "OaSTWAVb+9vA4sJqYuS8Ugt2dwpv92q5WLgXx56b2pc+YIqtOzUaSySDahHnUL9b16cbOzYueISSdKKo93GPDQ==",
   "success": true,
-  "projectFilePath": "E:\\ИщуIT\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
+  "projectFilePath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Админ\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

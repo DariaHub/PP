@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "41/MzbnCCyc7JnqO4dpiKdfZFrgoPSywQ/g6f9Evx2m1RmHxwlhV4JZbGDJZ8Dw2Wf+BG1C2seiKIAZfWxeVRA==",
+  "dgSpecHash": "LuLpiDE/+Pv98iiJ8CeYeg7hG2ZT/ZQciMAuIqWvAIFqgP03J60TrM5wLKgmDCvTIB5z3E6vMNHGHyCbPTCtSw==",
   "success": true,
-  "projectFilePath": "E:\\ИщуIT\\ИщуIT\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.9\\microsoft.entityframeworkcore.abstractions.6.0.9.nupkg.sha512",

@@ -779,11 +779,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ИщуIT\\ИщуIT\\LoggerService\\LoggerService.csproj",
+      "projectUniqueName": "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\LoggerService.csproj",
       "projectName": "LoggerService",
-      "projectPath": "E:\\ИщуIT\\ИщуIT\\LoggerService\\LoggerService.csproj",
+      "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\LoggerService.csproj",
       "packagesPath": "C:\\Users\\Админ\\.nuget\\packages\\",
-      "outputPath": "E:\\ИщуIT\\ИщуIT\\LoggerService\\obj\\",
+      "outputPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -804,8 +804,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\ИщуIT\\ИщуIT\\Contracts\\Contracts.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\Contracts\\Contracts.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\Contracts\\Contracts.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Contracts\\Contracts.csproj"
             }
           }
         }

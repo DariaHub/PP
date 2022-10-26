@@ -627,11 +627,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj",
+      "projectUniqueName": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj",
+      "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\Админ\\.nuget\\packages\\",
-      "outputPath": "E:\\ИщуIT\\ИщуIT\\Entities\\obj\\",
+      "outputPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"

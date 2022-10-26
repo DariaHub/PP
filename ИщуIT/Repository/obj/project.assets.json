@@ -664,11 +664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ИщуIT\\ИщуIT\\Repository\\Repository.csproj",
+      "projectUniqueName": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "E:\\ИщуIT\\ИщуIT\\Repository\\Repository.csproj",
+      "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Repository\\Repository.csproj",
       "packagesPath": "C:\\Users\\Админ\\.nuget\\packages\\",
-      "outputPath": "E:\\ИщуIT\\ИщуIT\\Repository\\obj\\",
+      "outputPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -689,11 +689,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\ИщуIT\\ИщуIT\\Contracts\\Contracts.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\Contracts\\Contracts.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\Contracts\\Contracts.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Contracts\\Contracts.csproj"
             },
-            "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj"
             }
           }
         }

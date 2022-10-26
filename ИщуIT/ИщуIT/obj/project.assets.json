@@ -2599,11 +2599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ИщуIT\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
+      "projectUniqueName": "E:\\ИщуIT\\git\\PP\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
       "projectName": "ИщуIT",
-      "projectPath": "E:\\ИщуIT\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
+      "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
       "packagesPath": "C:\\Users\\Админ\\.nuget\\packages\\",
-      "outputPath": "E:\\ИщуIT\\ИщуIT\\ИщуIT\\obj\\",
+      "outputPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\ИщуIT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2624,14 +2624,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\Entities\\Entities.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Entities\\Entities.csproj"
             },
-            "E:\\ИщуIT\\ИщуIT\\LoggerService\\LoggerService.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\LoggerService\\LoggerService.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\LoggerService.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\LoggerService\\LoggerService.csproj"
             },
-            "E:\\ИщуIT\\ИщуIT\\Repository\\Repository.csproj": {
-              "projectPath": "E:\\ИщуIT\\ИщуIT\\Repository\\Repository.csproj"
+            "E:\\ИщуIT\\git\\PP\\ИщуIT\\Repository\\Repository.csproj": {
+              "projectPath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\Repository\\Repository.csproj"
             }
           }
         }
