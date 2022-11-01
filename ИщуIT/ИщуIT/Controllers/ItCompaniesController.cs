@@ -2,9 +2,11 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ИщуIT.ActionFilters;
 
 namespace ИщуIT.Controllers
@@ -23,7 +25,7 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
         }
         [HttpGet("{id}", Name = "GetItCompanies")]
-        public async Task<IActionResult> GetItCompaniesAsync(Guid vacancyId, Guid id)
+        public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId, Guid id)
         {
             var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
@@ -41,7 +43,7 @@ namespace ИщуIT.Controllers
             return Ok(itCompany);
         }
         [HttpGet]
-        public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId)
+        public async Task<IActionResult> GetItCompaniesAsync(Guid vacancyId, [FromQuery] ItCompanyParameters parameters)
         {
             var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
             if (vacancy == null)
@@ -49,7 +51,8 @@ namespace ИщуIT.Controllers
                 _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
                 return NotFound();
             }
-            var itCompaniesFromDb = await _repository.ItCompany.GetItCompaniesAsync(vacancyId, false);
+            var itCompaniesFromDb = await _repository.ItCompany.GetItCompaniesAsync(vacancyId, false, parameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(itCompaniesFromDb.MetaData));
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
             return Ok(itCompanies);
         }

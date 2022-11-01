@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,13 @@ namespace Repository
 
         public void DeleteItCompany(ItCompany itCompany) => Delete(itCompany);
 
-        public async Task<IEnumerable<ItCompany>> GetItCompaniesAsync(Guid vacancyId, bool trackChanges) =>
-            await FindByCondition(c => c.Id_Vacancy.Equals(vacancyId), trackChanges).OrderBy(c => c.Name).ToListAsync();
+        public async Task<PagedList<ItCompany>> GetItCompaniesAsync(Guid vacancyId, bool trackChanges, ItCompanyParameters parameters)
+        {
+            var itCompanies = await FindByCondition(c => c.Id_Vacancy.Equals(vacancyId), trackChanges)
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+            return PagedList<ItCompany>.ToPagedList(itCompanies, parameters.PageNumber, parameters.PageSize);
+        }            
 
         public async Task<ItCompany> GetItCompanyAsync(Guid vacancyId, Guid id, bool trackChanges) =>
             await FindByCondition(c => c.Id_Vacancy.Equals(vacancyId) && c.Id.Equals(id), trackChanges).SingleOrDefaultAsync();

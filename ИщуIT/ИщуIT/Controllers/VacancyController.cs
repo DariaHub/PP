@@ -2,9 +2,11 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ИщуIT.ActionFilters;
 
 namespace ИщуIT.Controllers
@@ -23,9 +25,10 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetVacanciesAsync()
+        public async Task<IActionResult> GetVacanciesAsync([FromQuery] VacancyParameters parameters)
         {
-            var vacancies = await _repository.Vacancy.GetVacanciesAsync(false);
+            var vacancies = await _repository.Vacancy.GetVacanciesAsync(false, parameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(vacancies.MetaData));
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(vacanciesDto);
         }
