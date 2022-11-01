@@ -23,7 +23,7 @@ namespace Repository
 
         public async Task<PagedList<Vacancy>> GetVacanciesAsync(bool trackChanges, VacancyParameters parameters)
         {
-            var vacanies = await FindAll(trackChanges)
+            var vacanies = await FindByCondition(c => c.Salary >= parameters.MinSalary && c.Salary <= parameters.MaxSalary, trackChanges)
                 .OrderBy(c => c.Name)
                 .ToListAsync();
             return PagedList<Vacancy>.ToPagedList(vacanies, parameters.PageNumber, parameters.PageSize);
