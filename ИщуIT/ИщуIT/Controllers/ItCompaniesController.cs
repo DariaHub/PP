@@ -5,6 +5,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using ИщуIT.ActionFilters;
 
 namespace ИщуIT.Controllers
 {
@@ -78,54 +79,28 @@ namespace ИщуIT.Controllers
             return CreatedAtRoute("GetItCompanies", new { vacancyId, itCompanyReturn.Id}, itCompanyReturn);
         }
         [HttpDelete("{id}")]
+        [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteItCompanyAsync(Guid vacancyId, Guid id)
         {
-            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
-            if (vacancy == null)
-            {
-                _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
-                return NotFound();
-            }
-            var itCompany = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, false);
-            if (itCompany == null)
-            {
-                _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
-                return NotFound();
-            }
+            var itCompany = HttpContext.Items["itcompany"] as ItCompany;
             _repository.ItCompany.DeleteItCompany(itCompany);
             await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] ItCompanyUpdateDto itCompany)
         {
-            if (itCompany == null)
-            {
-                _logger.LogError("ItCompanyCreateDto object sent from client is null.");
-                return BadRequest("ItCompanyCreateDto object is null");
-            }
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError("Invalid model state for the ItCompanyUpdateDto object");
-                return UnprocessableEntity(ModelState);
-            }
-            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
-            if (vacancy == null)
-            {
-                _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
-                return NotFound();
-            }
-            var itCompanyEntity = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, true);
-            if (itCompanyEntity == null)
-            {
-                _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
-                return NotFound();
-            }
+
+            var itCompanyEntity = HttpContext.Items["itcompany"] as ItCompany;
             _mapper.Map(itCompany, itCompanyEntity);
             await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPatch("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] JsonPatchDocument<ItCompanyUpdateDto> itCompany)
         {
             if (itCompany == null)
@@ -133,18 +108,7 @@ namespace ИщуIT.Controllers
                 _logger.LogError("ItCompanyCreateDto object sent from client is null.");
                 return BadRequest("ItCompanyCreateDto object is null");
             }
-            var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
-            if (vacancy == null)
-            {
-                _logger.LogInfo($"Vacancy with id: {vacancyId} doesn't exist in the database.");
-                return NotFound();
-            }
-            var itCompanyEntity = await _repository.ItCompany.GetItCompanyAsync(vacancyId, id, true);
-            if (itCompanyEntity == null)
-            {
-                _logger.LogInfo($"ItCompany with id: {id} doesn't exist in the database.");
-                return NotFound();
-            }
+            var itCompanyEntity = HttpContext.Items["itcompany"] as ItCompany;
             var itCompanyPatch = _mapper.Map<ItCompanyUpdateDto>(itCompanyEntity);
             itCompany.ApplyTo(itCompanyPatch, ModelState);
             TryValidateModel(itCompanyPatch);

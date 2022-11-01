@@ -3,6 +3,7 @@ using lrs.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using ИщуIT.ActionFilters;
 using ИщуIT.Extensions;
 
 public class Startup
@@ -34,6 +35,11 @@ public class Startup
         {
             options.SuppressModelStateInvalidFilter = true;
         });
+        services.AddScoped<ValidationFilterAttribute>();
+        services.AddScoped<ValidateCompanyExistsAttribute>();
+        services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>();
+        services.AddScoped<ValidateVacancyExistsAttribute>();
+        services.AddScoped<ValidateItCompanyExistsAttribute>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
