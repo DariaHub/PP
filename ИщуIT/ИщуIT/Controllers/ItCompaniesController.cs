@@ -18,11 +18,13 @@ namespace ИщуIT.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public ItCompaniesController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IDataShaper<ItCompanyDto> _dataShaper;
+        public ItCompaniesController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IDataShaper<ItCompanyDto> dataShaper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            _dataShaper = dataShaper;
         }
         [HttpGet("{id}", Name = "GetItCompanies")]
         public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId, Guid id)
@@ -54,7 +56,7 @@ namespace ИщуIT.Controllers
             var itCompaniesFromDb = await _repository.ItCompany.GetItCompaniesAsync(vacancyId, false, parameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(itCompaniesFromDb.MetaData));
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
-            return Ok(itCompanies);
+            return Ok(_dataShaper.ShapeData(itCompanies, parameters.Fields));
         }
         [HttpPost]
         public async Task<IActionResult> CreateItCompaniesAsync(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)

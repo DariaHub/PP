@@ -8,6 +8,10 @@ namespace Entities.RequestFeatures
 {
     public class VacancyParameters : RequestParameters
     {
+        public VacancyParameters()
+        {
+            OrderBy = "name";
+        }
         public uint MinSalary { get; set; }
         public uint MaxSalary { get; set; } = int.MaxValue;
         public bool ValidSalaryRange => MinSalary < MaxSalary;

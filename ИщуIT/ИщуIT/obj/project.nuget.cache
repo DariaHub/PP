@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OaSTWAVb+9vA4sJqYuS8Ugt2dwpv92q5WLgXx56b2pc+YIqtOzUaSySDahHnUL9b16cbOzYueISSdKKo93GPDQ==",
+  "dgSpecHash": "mQp7+9mLclyWO6FM8QxqCFnIflU1YP27VECq08sGOt4IDYtlclEKXYaj2TqkWKWEfQ3H0E9JijrSFRQKbruZ8Q==",
   "success": true,
   "projectFilePath": "E:\\ИщуIT\\git\\PP\\ИщуIT\\ИщуIT\\ИщуIT.csproj",
   "expectedPackageFiles": [
@@ -52,6 +52,7 @@
     "C:\\Users\\Админ\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.8.0\\system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
+    "C:\\Users\\Админ\\.nuget\\packages\\system.linq.dynamic.core\\1.2.21\\system.linq.dynamic.core.1.2.21.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\system.runtime.caching\\4.7.0\\system.runtime.caching.4.7.0.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Админ\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",

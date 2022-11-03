@@ -18,11 +18,13 @@ namespace ИщуIT.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public VacancyController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IDataShaper<VacancyDto> _dataShaper;
+        public VacancyController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IDataShaper<VacancyDto> dataShaper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            _dataShaper = dataShaper;
         }
         [HttpGet]
         public async Task<IActionResult> GetVacanciesAsync([FromQuery] VacancyParameters parameters)
@@ -30,7 +32,7 @@ namespace ИщуIT.Controllers
             var vacancies = await _repository.Vacancy.GetVacanciesAsync(false, parameters);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(vacancies.MetaData));
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
-            return Ok(vacanciesDto);
+            return Ok(_dataShaper.ShapeData(vacanciesDto, parameters.Fields));
         }
         [HttpGet("{id}", Name = "GetVacancy")]
         public async Task<IActionResult> GetVacancyAsync(Guid id)

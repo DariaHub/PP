@@ -1,8 +1,10 @@
 ﻿using Contracts;
+using Entities.DataTransferObjects;
 using lrs.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using Repository.DataShaping;
 using ИщуIT.ActionFilters;
 using ИщуIT.Extensions;
 
@@ -40,6 +42,9 @@ public class Startup
         services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>();
         services.AddScoped<ValidateVacancyExistsAttribute>();
         services.AddScoped<ValidateItCompanyExistsAttribute>();
+        services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+        services.AddScoped<IDataShaper<VacancyDto>, DataShaper<VacancyDto>>();
+        services.AddScoped<IDataShaper<ItCompanyDto>, DataShaper<ItCompanyDto>>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

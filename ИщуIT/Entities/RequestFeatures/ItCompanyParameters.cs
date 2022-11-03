@@ -8,6 +8,9 @@ namespace Entities.RequestFeatures
 {
     public class ItCompanyParameters : RequestParameters
     {
-
+        public ItCompanyParameters()
+        {
+            OrderBy = "name";
+        }
     }
 }
