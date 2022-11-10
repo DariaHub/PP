@@ -27,6 +27,7 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;   
         }
+        [HttpHead]
         [HttpGet]
         public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, [FromQuery] EmployeeParameters employeeParameters)
         {
