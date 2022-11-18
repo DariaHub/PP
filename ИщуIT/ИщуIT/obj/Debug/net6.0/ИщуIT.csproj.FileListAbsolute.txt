@@ -158,3 +158,5 @@ E:\ИщуIT\git\PP\ИщуIT\ИщуIT\bin\Debug\net6.0\System.Linq.Dynamic.Core.d
 E:\ИщуIT\git\PP\ИщуIT\ИщуIT\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 E:\ИщуIT\git\PP\ИщуIT\ИщуIT\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\ИщуIT\git\PP\ИщуIT\ИщуIT\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\ИщуIT\git\PP\ИщуIT\ИщуIT\bin\Debug\net6.0\ИщуIT.xml
+E:\ИщуIT\git\PP\ИщуIT\ИщуIT\obj\Debug\net6.0\ИщуIT.xml

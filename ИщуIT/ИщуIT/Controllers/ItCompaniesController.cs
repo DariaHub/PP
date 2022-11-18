@@ -27,6 +27,12 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
+        /// <summary>
+        /// Возврящает список ИТ-компаний
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="id">Id ИТ-компании</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetItCompanies"), Authorize]
         public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId, Guid id)
         {
@@ -45,6 +51,12 @@ namespace ИщуIT.Controllers
             var itCompany = _mapper.Map<ItCompanyDto>(itCompanyDb);
             return Ok(itCompany);
         }
+        /// <summary>
+        /// Возврящает ИТ-компанию
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="parameters">Параметры возвращаемого списка</param>
+        /// <returns></returns>
         [HttpGet, Authorize]
         public async Task<IActionResult> GetItCompaniesAsync(Guid vacancyId, [FromQuery] ItCompanyParameters parameters)
         {
@@ -59,6 +71,12 @@ namespace ИщуIT.Controllers
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
             return Ok(_dataShaper.ShapeData(itCompanies, parameters.Fields));
         }
+        /// <summary>
+        /// Создает ИТ-компанию
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="itCompany">Модель создания ИТ-компании</param>
+        /// <returns></returns>
         [HttpPost, Authorize]
         public async Task<IActionResult> CreateItCompaniesAsync(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)
         {
@@ -84,6 +102,12 @@ namespace ИщуIT.Controllers
             var itCompanyReturn = _mapper.Map<ItCompanyDto>(itCompaniesEntity);
             return CreatedAtRoute("GetItCompanies", new { vacancyId, itCompanyReturn.Id}, itCompanyReturn);
         }
+        /// <summary>
+        /// Удаляет ИТ-компанию
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="id">Id ИТ-компании</param>
+        /// <returns></returns>
         [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteItCompanyAsync(Guid vacancyId, Guid id)
@@ -93,6 +117,13 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет ИТ-компанию
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="id">Id ИТ-компании</param>
+        /// <param name="itCompany">Модель обновления ИТ-компании</param>
+        /// <returns></returns>
         [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
@@ -104,6 +135,13 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет ИТ-компанию
+        /// </summary>
+        /// <param name="vacancyId">Id вакансии</param>
+        /// <param name="id">Id ИТ-компании</param>
+        /// <param name="itCompany"></param>
+        /// <returns></returns>
         [HttpPatch("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]

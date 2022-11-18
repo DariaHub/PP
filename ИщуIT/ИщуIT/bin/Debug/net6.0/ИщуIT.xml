@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ИщуIT</name>
+    </assembly>
+    <members>
+        <member name="M:ИщуIT.Controllers.AuthenticationController.RegisterUser(Entities.DataTransferObjects.UserForRegistrationDto)">
+            <summary>
+            Регистрация пользователя
+            </summary>
+            <param name="userForRegistration">Модель регистрации пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.AuthenticationController.Authenticate(Entities.DataTransferObjects.UserForAuthenticationDto)">
+            <summary>
+            Авторизация пользователя
+            </summary>
+            <param name="user">Модель авторизации пользователя</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.GetCompanies(Entities.RequestFeatures.CompanyParameters)">
+            <summary>
+            Возвращает список компаний
+            </summary>
+            <param name="parameters">Параметры возвращаемого списка</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.GetCompany(System.Guid)">
+            <summary>
+            Возвращает компанию
+            </summary>
+            <param name="id">Id компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.CreateCompany(Entities.DataTransferObjects.CompanyForCreationDto)">
+            <summary>
+            Создает компанию
+            </summary>
+            <param name="company">Модель создания компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.GetCompanyCollection(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Возвращает коллекцию
+            </summary>
+            <param name="ids">Коллекция ids</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.CreateCompanyCollection(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.CompanyForCreationDto})">
+            <summary>
+            Создает коллекцию
+            </summary>
+            <param name="companyCollection">Коллекция компаний</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.DeleteCompany(System.Guid)">
+            <summary>
+            Удаляет компанию
+            </summary>
+            <param name="id">Id компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.UpdateCompany(System.Guid,Entities.DataTransferObjects.CompanyForUpdateDto)">
+            <summary>
+            Изменяет компанию
+            </summary>
+            <param name="id">Id компании</param>
+            <param name="company">Модель обновления компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.CompaniesController.GetCompaniesOptions">
+            <summary>
+            Возвращает список запросов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.GetEmployeesForCompany(System.Guid,Entities.RequestFeatures.EmployeeParameters)">
+            <summary>
+            Возвращает список сотрудников
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="employeeParameters">Параметры возвращаемого списка</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.GetEmployeesForCompany(System.Guid,System.Guid)">
+            <summary>
+            Возвращяет сотрудника
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="id">Id сотрудника</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.CreateEmployeeForCompany(System.Guid,Entities.DataTransferObjects.EmployeeForCreationDto)">
+            <summary>
+            Создает сотрудника
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="employee">Модель создания сотрудника</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.DeleteEmployeeForCompany(System.Guid,System.Guid)">
+            <summary>
+            Удаляет сотрудника
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="id">Id сотрудника</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.UpdateEmployeeForCompany(System.Guid,System.Guid,Entities.DataTransferObjects.EmployeeForUpdateDto)">
+            <summary>
+            Изменяет сотрудника
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="id">Id сотрудника</param>
+            <param name="employee">Модель обновления сотрудника</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.EmployeeController.PartiallyUpdateEmployeeForCompany(System.Guid,System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.EmployeeForUpdateDto})">
+            <summary>
+            Изменяет сотрудника
+            </summary>
+            <param name="companyId">Id компании</param>
+            <param name="id">Id сотрудника</param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.GetItCompanyAsync(System.Guid,System.Guid)">
+            <summary>
+            Возврящает список ИТ-компаний
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="id">Id ИТ-компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.GetItCompaniesAsync(System.Guid,Entities.RequestFeatures.ItCompanyParameters)">
+            <summary>
+            Возврящает ИТ-компанию
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="parameters">Параметры возвращаемого списка</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.CreateItCompaniesAsync(System.Guid,Entities.DataTransferObjects.ItCompanyCreateDto)">
+            <summary>
+            Создает ИТ-компанию
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="itCompany">Модель создания ИТ-компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.DeleteItCompanyAsync(System.Guid,System.Guid)">
+            <summary>
+            Удаляет ИТ-компанию
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="id">Id ИТ-компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.UpdateItCompanyAsync(System.Guid,System.Guid,Entities.DataTransferObjects.ItCompanyUpdateDto)">
+            <summary>
+            Изменяет ИТ-компанию
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="id">Id ИТ-компании</param>
+            <param name="itCompany">Модель обновления ИТ-компании</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.ItCompaniesController.UpdateItCompanyAsync(System.Guid,System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.ItCompanyUpdateDto})">
+            <summary>
+            Изменяет ИТ-компанию
+            </summary>
+            <param name="vacancyId">Id вакансии</param>
+            <param name="id">Id ИТ-компании</param>
+            <param name="itCompany"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.GetVacanciesAsync(Entities.RequestFeatures.VacancyParameters)">
+            <summary>
+            Возврящает список вакансий
+            </summary>
+            <param name="parameters">Параметры возвращаемого списка</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.GetVacancyAsync(System.Guid)">
+            <summary>
+            Возвращает вакансию
+            </summary>
+            <param name="id">Id вакансии</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.CreateVacancyAsync(Entities.DataTransferObjects.VacancyCreateDto)">
+            <summary>
+            Создает вакансию
+            </summary>
+            <param name="vacancy">Модель создания вакансии</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.DeleteVacancyAsync(System.Guid)">
+            <summary>
+            Удаляет вакансию
+            </summary>
+            <param name="id">Id вакансии</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.UpdateVacancyAsync(System.Guid,Entities.DataTransferObjects.VacancyUpdateDto)">
+            <summary>
+            Изменяет вакансию
+            </summary>
+            <param name="id">Id вакансии</param>
+            <param name="vacancy">Модель обновления вакансии</param>
+            <returns></returns>
+        </member>
+        <member name="M:ИщуIT.Controllers.VacancyController.UpdateVacancyAsync(System.Guid,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.VacancyUpdateDto})">
+            <summary>
+            Изменяет вакансию
+            </summary>
+            <param name="id">Id вакансии</param>
+            <param name="vacancy"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

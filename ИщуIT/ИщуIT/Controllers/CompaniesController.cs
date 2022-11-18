@@ -15,9 +15,9 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace ИщуIT.Controllers
 {
-    [ApiVersion("1.0")]
     [Route("api/companies")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -29,6 +29,11 @@ namespace ИщуIT.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Возвращает список компаний
+        /// </summary>
+        /// <param name="parameters">Параметры возвращаемого списка</param>
+        /// <returns></returns>
         [HttpGet(Name = "GetCompanies"), Authorize]
         public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters parameters)
         {
@@ -37,6 +42,11 @@ namespace ИщуIT.Controllers
             var companyDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return Ok(companyDto);
         }
+        /// <summary>
+        /// Возвращает компанию
+        /// </summary>
+        /// <param name="id">Id компании</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "CompanyById"), Authorize]
         public async Task<IActionResult> GetCompany(Guid id)
         {
@@ -52,6 +62,11 @@ namespace ИщуIT.Controllers
                 return Ok(companyDto);
             }
         }
+        /// <summary>
+        /// Создает компанию
+        /// </summary>
+        /// <param name="company">Модель создания компании</param>
+        /// <returns></returns>
         [HttpPost, Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto company)
@@ -63,7 +78,11 @@ namespace ИщуIT.Controllers
             return CreatedAtRoute("CompanyById", new { id = companyToReturn.Id },
             companyToReturn);
         }
-
+        /// <summary>
+        /// Возвращает коллекцию
+        /// </summary>
+        /// <param name="ids">Коллекция ids</param>
+        /// <returns></returns>
         [HttpGet("collection/({ids})", Name = "CompanyCollection"), Authorize]
         public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
@@ -82,6 +101,11 @@ namespace ИщуIT.Controllers
             _mapper.Map<IEnumerable<CompanyDto>>(companyEntities);
             return Ok(companiesToReturn);
         }
+        /// <summary>
+        /// Создает коллекцию
+        /// </summary>
+        /// <param name="companyCollection">Коллекция компаний</param>
+        /// <returns></returns>
         [HttpPost("collection"), Authorize]
         public async Task<IActionResult> CreateCompanyCollection([FromBody] IEnumerable<CompanyForCreationDto> companyCollection)
         {
@@ -100,6 +124,11 @@ namespace ИщуIT.Controllers
             var ids = string.Join(",", companyCollectionToReturn.Select(c => c.Id));
             return CreatedAtRoute("CompanyCollection", new { ids }, companyCollectionToReturn);
         }
+        /// <summary>
+        /// Удаляет компанию
+        /// </summary>
+        /// <param name="id">Id компании</param>
+        /// <returns></returns>
         [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteCompany(Guid id)
@@ -109,6 +138,12 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет компанию
+        /// </summary>
+        /// <param name="id">Id компании</param>
+        /// <param name="company">Модель обновления компании</param>
+        /// <returns></returns>
         [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
@@ -119,6 +154,10 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Возвращает список запросов
+        /// </summary>
+        /// <returns></returns>
         [HttpOptions, Authorize]
         public IActionResult GetCompaniesOptions()
         {

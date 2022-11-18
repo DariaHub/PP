@@ -28,6 +28,12 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;   
         }
+        /// <summary>
+        /// Возвращает список сотрудников
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="employeeParameters">Параметры возвращаемого списка</param>
+        /// <returns></returns>
         [HttpHead]
         [HttpGet, Authorize]
         public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, [FromQuery] EmployeeParameters employeeParameters)
@@ -45,6 +51,12 @@ namespace ИщуIT.Controllers
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employeesFromDb);
             return Ok(_dataShaper.ShapeData(employeesDto, employeeParameters.Fields));
         }
+        /// <summary>
+        /// Возвращяет сотрудника
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id сотрудника</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetEmployeeForCompany"), Authorize]
         public async Task<IActionResult> GetEmployeesForCompany(Guid companyId, Guid id)
         {
@@ -63,6 +75,12 @@ namespace ИщуIT.Controllers
             var employee = _mapper.Map<EmployeeDto>(employeeDb);
             return Ok(employee);
         }
+        /// <summary>
+        /// Создает сотрудника
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="employee">Модель создания сотрудника</param>
+        /// <returns></returns>
         [HttpPost, Authorize]
         public async Task<IActionResult> CreateEmployeeForCompany(Guid companyId, [FromBody] EmployeeForCreationDto employee)
         {
@@ -92,6 +110,12 @@ namespace ИщуIT.Controllers
                 id = employeeToReturn.Id
             }, employeeToReturn);
         }
+        /// <summary>
+        /// Удаляет сотрудника
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id сотрудника</param>
+        /// <returns></returns>
         [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteEmployeeForCompany(Guid companyId, Guid id)
@@ -101,6 +125,13 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет сотрудника
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id сотрудника</param>
+        /// <param name="employee">Модель обновления сотрудника</param>
+        /// <returns></returns>
         [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
@@ -111,6 +142,13 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет сотрудника
+        /// </summary>
+        /// <param name="companyId">Id компании</param>
+        /// <param name="id">Id сотрудника</param>
+        /// <param name="patchDoc"></param>
+        /// <returns></returns>
         [HttpPatch("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateEmployeeForCompanyExistsAttribute))]
         public async Task<IActionResult> PartiallyUpdateEmployeeForCompany(Guid companyId, Guid id, [FromBody] JsonPatchDocument<EmployeeForUpdateDto> patchDoc)

@@ -25,6 +25,11 @@ namespace ИщуIT.Controllers
             _userManager = userManager;
             _authManager = authManager;
         }
+        /// <summary>
+        /// Регистрация пользователя
+        /// </summary>
+        /// <param name="userForRegistration">Модель регистрации пользователя</param>
+        /// <returns></returns>
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
@@ -42,6 +47,11 @@ namespace ИщуIT.Controllers
             await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
             return StatusCode(201);
         }
+        /// <summary>
+        /// Авторизация пользователя
+        /// </summary>
+        /// <param name="user">Модель авторизации пользователя</param>
+        /// <returns></returns>
         [HttpPost("login")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)

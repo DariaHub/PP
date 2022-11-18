@@ -27,6 +27,11 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
+        /// <summary>
+        /// Возврящает список вакансий
+        /// </summary>
+        /// <param name="parameters">Параметры возвращаемого списка</param>
+        /// <returns></returns>
         [HttpGet, Authorize]
         public async Task<IActionResult> GetVacanciesAsync([FromQuery] VacancyParameters parameters)
         {
@@ -35,6 +40,11 @@ namespace ИщуIT.Controllers
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(_dataShaper.ShapeData(vacanciesDto, parameters.Fields));
         }
+        /// <summary>
+        /// Возвращает вакансию
+        /// </summary>
+        /// <param name="id">Id вакансии</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetVacancy"), Authorize]
         public async Task<IActionResult> GetVacancyAsync(Guid id)
         {
@@ -47,6 +57,11 @@ namespace ИщуIT.Controllers
             var vacancyDto = _mapper.Map<VacancyDto>(vacancy);
             return Ok(vacancyDto);
         }
+        /// <summary>
+        /// Создает вакансию
+        /// </summary>
+        /// <param name="vacancy">Модель создания вакансии</param>
+        /// <returns></returns>
         [HttpPost, Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateVacancyAsync([FromBody] VacancyCreateDto vacancy)
@@ -57,6 +72,11 @@ namespace ИщуIT.Controllers
             var vacancyReturn = _mapper.Map<VacancyDto>(vacancyEntity);
             return CreatedAtRoute("GetVacancy", new { vacancyReturn.Id }, vacancyReturn);
         }
+        /// <summary>
+        /// Удаляет вакансию
+        /// </summary>
+        /// <param name="id">Id вакансии</param>
+        /// <returns></returns>
         [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
         public async Task<IActionResult> DeleteVacancyAsync(Guid id)
@@ -71,6 +91,12 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет вакансию
+        /// </summary>
+        /// <param name="id">Id вакансии</param>
+        /// <param name="vacancy">Модель обновления вакансии</param>
+        /// <returns></returns>
         [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
@@ -81,6 +107,12 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+        /// <summary>
+        /// Изменяет вакансию
+        /// </summary>
+        /// <param name="id">Id вакансии</param>
+        /// <param name="vacancy"></param>
+        /// <returns></returns>
         [HttpPatch("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
         public async Task<IActionResult> UpdateVacancyAsync(Guid id, [FromBody] JsonPatchDocument<VacancyUpdateDto> vacancy)
