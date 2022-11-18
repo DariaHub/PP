@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
@@ -28,7 +29,7 @@ namespace ИщуIT.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet(Name = "GetCompanies"), Authorize]
         public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters parameters)
         {
             var companies = await _repository.Company.GetAllCompaniesAsync(false, parameters);
@@ -36,7 +37,7 @@ namespace ИщуIT.Controllers
             var companyDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
             return Ok(companyDto);
         }
-        [HttpGet("{id}", Name = "CompanyById")]
+        [HttpGet("{id}", Name = "CompanyById"), Authorize]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company = await _repository.Company.GetCompanyAsync(id, false);
@@ -51,7 +52,7 @@ namespace ИщуIT.Controllers
                 return Ok(companyDto);
             }
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto company)
         {
@@ -63,7 +64,7 @@ namespace ИщуIT.Controllers
             companyToReturn);
         }
 
-        [HttpGet("collection/({ids})", Name = "CompanyCollection")]
+        [HttpGet("collection/({ids})", Name = "CompanyCollection"), Authorize]
         public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)
@@ -81,7 +82,7 @@ namespace ИщуIT.Controllers
             _mapper.Map<IEnumerable<CompanyDto>>(companyEntities);
             return Ok(companiesToReturn);
         }
-        [HttpPost("collection")]
+        [HttpPost("collection"), Authorize]
         public async Task<IActionResult> CreateCompanyCollection([FromBody] IEnumerable<CompanyForCreationDto> companyCollection)
         {
             if (companyCollection == null)
@@ -99,7 +100,7 @@ namespace ИщуIT.Controllers
             var ids = string.Join(",", companyCollectionToReturn.Select(c => c.Id));
             return CreatedAtRoute("CompanyCollection", new { ids }, companyCollectionToReturn);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteCompany(Guid id)
         {
@@ -108,7 +109,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
@@ -118,7 +119,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpOptions]
+        [HttpOptions, Authorize]
         public IActionResult GetCompaniesOptions()
         {
             Response.Headers.Add("Allow", "GET, OPTIONS, POST");

@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
-        [HttpGet("{id}", Name = "GetItCompanies")]
+        [HttpGet("{id}", Name = "GetItCompanies"), Authorize]
         public async Task<IActionResult> GetItCompanyAsync(Guid vacancyId, Guid id)
         {
             var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
@@ -44,7 +45,7 @@ namespace ИщуIT.Controllers
             var itCompany = _mapper.Map<ItCompanyDto>(itCompanyDb);
             return Ok(itCompany);
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetItCompaniesAsync(Guid vacancyId, [FromQuery] ItCompanyParameters parameters)
         {
             var vacancy = await _repository.Vacancy.GetVacancyAsync(vacancyId, false);
@@ -58,7 +59,7 @@ namespace ИщуIT.Controllers
             var itCompanies = _mapper.Map<IEnumerable<ItCompanyDto>>(itCompaniesFromDb);
             return Ok(_dataShaper.ShapeData(itCompanies, parameters.Fields));
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IActionResult> CreateItCompaniesAsync(Guid vacancyId, [FromBody] ItCompanyCreateDto itCompany)
         {
             if (itCompany == null)
@@ -83,7 +84,7 @@ namespace ИщуIT.Controllers
             var itCompanyReturn = _mapper.Map<ItCompanyDto>(itCompaniesEntity);
             return CreatedAtRoute("GetItCompanies", new { vacancyId, itCompanyReturn.Id}, itCompanyReturn);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteItCompanyAsync(Guid vacancyId, Guid id)
         {
@@ -92,7 +93,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] ItCompanyUpdateDto itCompany)
@@ -103,7 +104,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpPatch("{id}")]
+        [HttpPatch("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateItCompanyExistsAttribute))]
         public async Task<IActionResult> UpdateItCompanyAsync(Guid vacancyId, Guid id, [FromBody] JsonPatchDocument<ItCompanyUpdateDto> itCompany)

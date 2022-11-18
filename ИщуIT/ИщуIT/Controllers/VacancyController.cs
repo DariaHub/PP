@@ -3,6 +3,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace ИщуIT.Controllers
             _mapper = mapper;
             _dataShaper = dataShaper;
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> GetVacanciesAsync([FromQuery] VacancyParameters parameters)
         {
             var vacancies = await _repository.Vacancy.GetVacanciesAsync(false, parameters);
@@ -34,7 +35,7 @@ namespace ИщуIT.Controllers
             var vacanciesDto = _mapper.Map<IEnumerable<VacancyDto>>(vacancies);
             return Ok(_dataShaper.ShapeData(vacanciesDto, parameters.Fields));
         }
-        [HttpGet("{id}", Name = "GetVacancy")]
+        [HttpGet("{id}", Name = "GetVacancy"), Authorize]
         public async Task<IActionResult> GetVacancyAsync(Guid id)
         {
             var vacancy = await _repository.Vacancy.GetVacancyAsync(id, false);
@@ -46,7 +47,7 @@ namespace ИщуIT.Controllers
             var vacancyDto = _mapper.Map<VacancyDto>(vacancy);
             return Ok(vacancyDto);
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateVacancyAsync([FromBody] VacancyCreateDto vacancy)
         {
@@ -56,7 +57,7 @@ namespace ИщуIT.Controllers
             var vacancyReturn = _mapper.Map<VacancyDto>(vacancyEntity);
             return CreatedAtRoute("GetVacancy", new { vacancyReturn.Id }, vacancyReturn);
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
         public async Task<IActionResult> DeleteVacancyAsync(Guid id)
         {
@@ -70,7 +71,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
         public async Task<IActionResult> UpdateVacancyAsync(Guid id, [FromBody] VacancyUpdateDto vacancy)
@@ -80,7 +81,7 @@ namespace ИщуIT.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
-        [HttpPatch("{id}")]
+        [HttpPatch("{id}"), Authorize]
         [ServiceFilter(typeof(ValidateVacancyExistsAttribute))]
         public async Task<IActionResult> UpdateVacancyAsync(Guid id, [FromBody] JsonPatchDocument<VacancyUpdateDto> vacancy)
         {
